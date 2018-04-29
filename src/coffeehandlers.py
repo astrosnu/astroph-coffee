@@ -1801,7 +1801,7 @@ class ArchiveHandler(tornado.web.RequestHandler):
                             # update this article's local authors
                             local_articles[lind][4] = ', '.join(author_list)
 
-                    # show the listing page
+                    # show the listing page 
                     self.render("archivelisting.html",
                                 user_name=user_name,
                                 local_today=local_today,
