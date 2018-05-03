@@ -54,6 +54,10 @@
 <div class="row">
   <div class="small-12 columns">
 
+    <form id="voting-form" name="voting-form">
+      {% module xsrf_form_html() %}
+    </form>
+
     {% if local_articles %}
 
     <h2 id="local-papers">Papers with local authors</h2>
@@ -256,6 +260,29 @@
               </div>
             </div>
 
+	    <!-- JGKIM -->
+            <div class="row">
+              <div class="small-12 columns">
+                {% if user_reserved and article[0] in user_reserved %}
+                <a href="#" data-arxivid="{{ article[0] }}" data-reservetype="release"
+                   class="button small radius reserve-button expand alert">
+                  Release your reservation
+                </a>
+                {% elif article[13] and article[0] not in user_reserved %}
+                <a href="#" data-arxivid="{{ article[0] }}"
+                   class="button secondary small radius expand disabled">
+                  Paper already reserved
+                </a>
+                {% else %}
+                <a href="#" data-arxivid="{{ article[0] }}" data-reservetype="reserve"
+                   class="button secondary small radius reserve-button expand">
+                  <strong>Reserve</strong> for later discussion
+                </a>
+                {% end %}
+              </div>
+            </div>
+	    <!-- JGKIM -->
+
             {% if len(article[11]) > 0 %}
             <div class="row small-listing-row">
               <div class="small-12 columns">
@@ -393,6 +420,29 @@
               </div>
             </div>
 
+	    <!-- JGKIM -->
+            <div class="row">
+              <div class="small-12 columns">
+                {% if user_reserved and article[0] in user_reserved %}
+                <a href="#" data-arxivid="{{ article[0] }}" data-reservetype="release"
+                   class="button small radius reserve-button expand alert">
+                  Release your reservation
+                </a>
+                {% elif article[13] and article[0] not in user_reserved %}
+                <a href="#" data-arxivid="{{ article[0] }}"
+                   class="button secondary small radius expand disabled">
+                  Paper already reserved
+                </a>
+                {% else %}
+                <a href="#" data-arxivid="{{ article[0] }}" data-reservetype="reserve"
+                   class="button secondary small radius reserve-button expand">
+                  <strong>Reserve</strong> for later discussion
+                </a>
+                {% end %}
+              </div>
+            </div>
+	    <!-- JGKIM -->
+
             {% if len(article[11]) > 0 %}
             <div class="row small-listing-row">
               <div class="small-12 columns">
@@ -508,6 +558,29 @@
               </div>
             </div>
 
+	    <!-- JGKIM -->
+            <div class="row">
+              <div class="small-12 columns">
+                {% if user_reserved and article[0] in user_reserved %}
+                <a href="#" data-arxivid="{{ article[0] }}" data-reservetype="release"
+                   class="button small radius reserve-button expand alert">
+                  Release your reservation
+                </a>
+                {% elif article[13] and article[0] not in user_reserved %}
+                <a href="#" data-arxivid="{{ article[0] }}"
+                   class="button secondary small radius expand disabled">
+                  Paper already reserved
+                </a>
+                {% else %}
+                <a href="#" data-arxivid="{{ article[0] }}" data-reservetype="reserve"
+                   class="button secondary small radius reserve-button expand">
+                  <strong>Reserve</strong> for later discussion
+                </a>
+                {% end %}
+              </div>
+            </div>
+	    <!-- JGKIM -->
+
             <div class="row small-listing-row">
               <div class="small-12 columns">
                 Paper {{ article[1] }} &mdash; <a href="{{ article[7] }}">{{ article[0] }}</a>
@@ -526,6 +599,29 @@
                 </a>
               </div>
             </div>
+	    
+	    <!-- JGKIM -->
+            <div class="row">
+              <div class="small-12 columns">
+                {% if user_reserved and article[0] in user_reserved %}
+                <a href="#" data-arxivid="{{ article[0] }}" data-reservetype="release"
+                   class="button small radius reserve-button expand alert">
+                  Release your reservation
+                </a>
+                {% elif article[13] and article[0] not in user_reserved %}
+                <a href="#" data-arxivid="{{ article[0] }}"
+                   class="button secondary small radius expand disabled">
+                  Paper already reserved
+                </a>
+                {% else %}
+                <a href="#" data-arxivid="{{ article[0] }}" data-reservetype="reserve"
+                   class="button secondary small radius reserve-button expand">
+                  <strong>Reserve</strong> for later discussion
+                </a>
+                {% end %}
+              </div>
+            </div>
+	    <!-- JGKIM -->
 
             <div class="row small-listing-row">
               <div class="small-12 columns">

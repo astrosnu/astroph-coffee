@@ -1614,6 +1614,8 @@ class ArchiveHandler(tornado.web.RequestHandler):
 
         user_name = 'anonuser@%s' % ip_address
         new_user = True
+        
+        todays_utcdate = datetime.now(tz=utc).strftime('%Y-%m-%d') # JGKIM
 
         # check if this session_token corresponds to an existing user
         if session_token:
@@ -1776,6 +1778,20 @@ class ArchiveHandler(tornado.web.RequestHandler):
                         tzinfo=utc
                         ).strftime('%A, %b %d %Y')
 
+                    # JGKIM
+                    # get this user's votes
+                    user_articles = arxivdb.get_user_votes(todays_utcdate,
+                                                           user_name,
+                                                           database=self.database)
+                    user_reserved = arxivdb.get_user_reservations(
+                        todays_utcdate,
+                        user_name,
+                        database=self.database
+                    )
+                    # JGKIM
+
+                    LOGGER.info('user has votes on: %s, has reservations on: %s'
+                                % (user_articles, user_reserved))
 
                     # preprocess the local papers to highlight local author names
                     if len(local_articles) > 0:
@@ -1801,6 +1817,7 @@ class ArchiveHandler(tornado.web.RequestHandler):
                             # update this article's local authors
                             local_articles[lind][4] = ', '.join(author_list)
 
+
                     # show the listing page 
                     self.render("archivelisting.html",
                                 user_name=user_name,
@@ -1812,7 +1829,9 @@ class ArchiveHandler(tornado.web.RequestHandler):
                                 reserved_articles=reserved_articles,
                                 reserve_interval_days=self.reserve_interval,
                                 flash_message=flash_message,
-                                new_user=new_user)
+                                new_user=new_user,
+                                user_articles=user_articles, # JGKIM
+                                user_reserved=user_reserved) # JGKIM
 
             else:
 
