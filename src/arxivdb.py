@@ -221,8 +221,8 @@ def strip_affils(authorstr, subchar=','):
 
 def tag_local_authors(arxiv_date,
                       database=None,
-                      firstname_match_threshold=93,
-                      fullname_match_threshold=75,
+                      firstname_match_threshold=99,
+                      fullname_match_threshold=99,
                       update_db=False,
                       verbose=False):
 
@@ -425,8 +425,8 @@ def tag_local_authors(arxiv_date,
 def insert_articles(arxiv,
                     database=None,
                     tag_locals=True,
-                    fullname_match_threshold=75,
-                    firstname_match_threshold=93,
+                    fullname_match_threshold=99,
+                    firstname_match_threshold=99,
                     verbose=False):
     '''
     This inserts all articles in an arxivdict created by
